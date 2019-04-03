@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- <link rel="shortcut icon" href="/favicon.ico"> -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="/css/light7.min.css">
+	<link rel="stylesheet" href="//at.alicdn.com/t/font_1096648_1h5f4elx5tf.css">
+	<link rel="stylesheet" href="/css/common.css">
+	<style>
+		* {
+			/*touch-action: none;*/
+		}
+	
+		/*无限滚动*/
+		.infinite-scroll-preloader {
+		  /*margin-top:-20px;*/
+		}
+
+		.noMoreBox {
+			padding: 10px 0;
+			color: #c0c0c0;
+			text-align: center;
+		}
+
+		.chartItem {
+			height: 12rem;
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<!-- <div class="page"> -->
+	<!--   <header class="bar bar-nav">
+		  <h1 class="title">标题</h1>
+		</header> -->
+		
+	  <nav class="bar bar-tab">
+	    <a class="tab-item active" href="#page-home">
+	      <!-- <span class="icon icon-home"></span> -->
+	      <span class="tab-label">首页</span>
+	    </a>
+	    <a class="tab-item" href="#page-settings">
+	      <!-- <span class="icon icon-me"></span> -->
+	      <span class="tab-label">我</span>
+	    </a>
+	    <a class="tab-item" href="#">
+	      <!-- <span class="icon icon-star"></span> -->
+	      <span class="tab-label">收藏</span>
+	    </a>
+	    <a class="tab-item" href="#">
+	      <!-- <span class="icon icon-settings"></span> -->
+	      <span class="tab-label">设置</span>
+	    </a>
+	  </nav>
+
+	  <!-- page-inited 该属性加上后不能刷新-->
+		<div class="page  page-home  page-current" id="page-home">
+		    <header class="bar bar-nav">
+		  		<h1 class='title'>首页</h1>
+			</header>
+			<div class="content pull-to-refresh-content infinite-scroll" data-distance="100" data-ptr-distance="55" id="homeContent">
+			  <div class="pull-to-refresh-layer">
+			    <div class="preloader"></div>
+			    <div class="pull-to-refresh-arrow"></div>
+			  </div>
+			  
+			  <div class="cardBox">
+			  	<!-- <div class="card">
+				    <div class="card-header">
+				    	<div class="card-header-content row">
+				    		<span class="col-25"><i class="iconfont icon-CalendarControl"></i>开始</span>
+				    		<input class="col-75" id="beginDate"  type="text" data-toggle='date' />
+				    	</div>
+				    	<div class="card-header-content row">
+				    		<span class="col-25"><i class="iconfont icon-CalendarControl"></i>结束</span>
+				    		<input class="col-75" id="endDate"  type="text" data-toggle='date' />
+				    	</div>
+				    	
+					</div>
+				    <div class="card-content">
+				      <div class="card-content-inner">
+				        
+				      </div>
+				    </div>
+				  </div> -->
+				  <div class="card">
+				    <div class="card-header">图表</div>
+				    <div class="card-content">
+				      <div class="card-content-inner">
+				        <canvas id="myChart"  class="chartItem"  height="260"></canvas>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="card">
+				    <div class="card-header">趋势</div>
+				    <div class="card-content">
+				      <div class="card-content-inner">
+				        <canvas id="sleepChart" class="chartItem"></canvas>
+				        <div class="btn-Group">
+				        	<p><a href="javascript:void;" id="sleepBtn" class="button button-light">提交</a></p>
+						</div>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="card">
+				    <div class="card-header">card</div>
+				    <div class="card-content">
+				      <div class="card-content-inner">
+				        Hello there! I am a card;
+				      </div>
+				    </div>
+				  </div>
+				  <div class="card">
+				    <div class="card-header">card</div>
+				    <div class="card-content">
+				      <div class="card-content-inner">
+				        Hello there! I am a card;
+				      </div>
+				    </div>
+				  </div>
+				  <div class="card">
+				    <div class="card-header">card</div>
+				    <div class="card-content">
+				      <div class="card-content-inner">
+				        Hello there! I am a card;
+				      </div>
+				    </div>
+				  </div>
+				  <div class="card">
+				    <div class="card-header">card</div>
+				    <div class="card-content">
+				      <div class="card-content-inner">
+				        Hello there! I am a card;
+				      </div>
+				    </div>
+				  </div>
+			  </div>
+			  
+			  
+			  <div class="infinite-scroll-preloader">
+		        	<div class="preloader"></div>
+		      </div>
+			</div>
+		</div>
+
+<div id="page-settings" class="page page-settings page-inited ">
+  <header class="bar bar-nav">
+    <h1 class="title">Settings</h1>
+  </header>
+
+  <div class="content">
+  	<div class="content-block">
+      <p><a href="#" class="open-indicator">Open Indicator</a></p>
+    </div>
+    <div class="page-settings">
+      <div class="list-block media-list person-card">
+        <ul>
+          <li>
+            <div href="#" class="item-content">
+              <div class="item-media"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="80"></div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">Mr Potato</div>
+                </div>
+                <div class="item-subtitle">Time is money</div>
+                <div class="item-text"><strong>528</strong> Follow</div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="content-block">
+      	<!-- <iframe src="page/a.html" frameborder="0" ></iframe> -->
+      </div>
+      
+      <div class="row text-center">
+        <div class="col-25">
+          <h4>12</h4>
+          <div class="color-gray">in Cart</div>
+        </div>
+        <div class="col-25">
+          <h4>5</h4>
+          <div class="color-gray">Sent</div>
+        </div>
+        <div class="col-25">
+          <h4>2</h4>
+          <div class="color-gray">Delivery</div>
+        </div>
+        <div class="col-25">
+          <h4>85</h4>
+          <div class="color-gray">Comments</div>
+        </div>
+      </div>
+      <div class="list-block list">
+        <ul>
+          <li class="item-content item-link">
+            <div class="item-media"><i class="icon icon-settings"></i></div>
+            <div class="item-inner">
+              <div class="item-title">Account</div>
+            </div>
+          </li>
+          <li class="item-content item-link">
+            <div class="item-media"><i class="icon icon-me"></i></div>
+            <div class="item-inner">
+              <div class="item-title">Me</div>
+            </div>
+          </li>
+          <li class="item-content item-link">
+            <div class="item-media"><i class="icon icon-message"></i></div>
+            <div class="item-inner">
+              <div class="item-title">Noti</div>
+            </div>
+          </li>
+          <li class="item-content item-link">
+            <div class="item-media"><i class="icon icon-star"></i></div>
+            <div class="item-inner">
+              <div class="item-title">Fav</div>
+            </div>
+          </li>
+          <li class="item-content item-link">
+            <div class="item-media"><i class="icon icon-friends"></i></div>
+            <div class="item-inner">
+              <div class="item-title">Help</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="content-block">
+        <a href="/examples/light7-mall/index.html" class="button button-big button-fill button-danger external">Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div id="page-settings" class="page page-goods page-inited page-current" style="">
+  <div class="content infinite-scroll">
+    <div class="swiper-container swiper-container-horizontal" data-space-between="10">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide swiper-slide-active" style="width: 375px; margin-right: 10px;">
+          <img class="card-cover" src="//gdp.alicdn.com/bao/uploaded/i1/TB1kzlgHVXXXXbtXpXXXXXXXXXX_!!0-item_pic.jpg_640x640.jpg" alt="">
+        </div>
+        <div class="swiper-slide swiper-slide-next" style="width: 375px; margin-right: 10px;">
+          <img class="card-cover" src="//gdp.alicdn.com/bao/uploaded/i2/TB1mEnmHXXXXXXHapXXXXXXXXXX_!!0-item_pic.jpg_640x640.jpg" alt="">
+        </div>
+        <div class="swiper-slide" style="width: 375px; margin-right: 10px;">
+          <img class="card-cover" src="//gdp.alicdn.com/bao/uploaded/i4/TB13mgfHpXXXXcVXFXXXXXXXXXX_!!2-item_pic.png_640x640.jpg" alt="">
+        </div>
+      </div>
+      <div class="swiper-pagination swiper-pagination-bullets"><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span></div>
+    </div>
+    
+    <div class="infinite-scroll-preloader">
+      <div class="preloader"></div>
+    </div>
+  </div>
+</div> -->
+
+<div class="panel panel-left panel-reveal theme-dark" id="panel-themes" style="">
+  <div class="content-block">
+    <p>Themes</p>
+    <div class="list-block">
+      <ul>
+        <li>
+          <div class="item-content">
+            <div class="item-inner">
+              <div class="item-title label" style="width: 60%;">Night Mode</div>
+              <div class="item-input">
+                <label class="label-switch">
+                  <input type="checkbox" id="dark-switch">
+                  <div class="checkbox"></div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+	  
+	<!-- </div> -->
+</body>
+</html>
+<script src="/js/jquery.js"></script>
+<!-- <script type="text/javascript" src="js/flexible.debug.js"></script>
+<script type="text/javascript" src="js/flexible_css.debug.js"></script> -->
+<script type="text/javascript" src="/js/fastclick.js"></script>
+<script type="text/javascript" src="/js/light7.min.js"></script>
+<script type="text/javascript" src="/js/highcharts.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+<script src="https://gw.alipayobjects.com/os/antv/assets/f2/3.3.7/f2.min.js"></script>
+<script src="https://gw.alipayobjects.com/os/rmsportal/NjNldKHIVQRozfbAOJUW.js"></script>
+<!-- <script src="https://js.fundebug.cn/fundebug.1.7.3.min.js"
+  apikey="175ee7d9772fcd8317d7b09b9a56b43f6f3bc6397e0b3db5c2f955b8e8c25abd"></script> -->
+  <!-- <script type="text/javascript" src="https://js.fundebug.cn/fundebug.revideo.0.2.0.min.js" ></script> -->
+<!-- <script type="text/javascript" src="/model/card01.js"></script> -->
+<script type="text/javascript">
+	$(function() {
+	    // FastClick.attach(document.body);
+	    $.init();
+	    $.config = {
+	    	router: false
+	    }
+	    $(document).on('refresh', '.pull-to-refresh-content',function(e) {
+	    	getHomeCard()
+			// console.log(2222);
+		 //    setTimeout(function() {
+		 //        var cardHTML = '<div class="card">' +
+		 //                          '<div class="card-header">New Card</div>' +
+		 //                          '<div class="card-content">' +
+		 //                            '<div class="card-content-inner">' +
+		 //                                'Hello! I am the new card!'+(Math.random()*1000000)+
+		 //                            '</div>' +
+		 //                          '</div>' +
+		 //                      '</div>';
+
+		 //        $(e.target).find('.card').replaceWith(cardHTML);
+		 //        // done
+		 //        $.pullToRefreshDone('.pull-to-refresh-content');
+		 //    }, 2000);
+		});
+	});
+
+	//请求首页标题
+	$.ajax({
+		type: "post",
+		dataType: "json",
+		data: "",
+		url: "/getHomeTitle",
+		success: function(data) {
+			if (data.flag == 1) {
+				$("#page-home header .title").html(data.data);
+			}
+		}
+	})
+
+
+	$(document).on('click','.open-indicator', function () {
+	      $.showIndicator();
+	      setTimeout(function () {
+	          $.hideIndicator();
+	      }, 2000);
+	});
+
+	//无限滚动
+    var loading = false;
+    var maxItems = 15;
+    var lastIndex = $('#page-home .cardBox .card').length;		//叠加数
+
+    $(document).on('infinite', '.infinite-scroll',function() {
+        // 如果正在加载，则退出
+        if (loading) return;
+
+        // 设置flag
+        loading = true;
+        setTimeout(function() {
+            loading = false;
+            console.log("lastIndex---" + lastIndex);
+            console.log("maxItems---" + maxItems);
+            getHomeCard();
+        }, 750);
+    });
+
+	//获取首页Card
+	function getHomeCard() {
+		console.log("执行了");
+		$.ajax({
+			type: "post",
+			dataType: "json",
+			data: {changeNum : lastIndex},
+			url: "/getHomeCard",
+			success: (data) => {
+				if (data.flag == 1) {
+					console.log(data.data);
+					changeNum = data.data;
+					if (changeNum != null) {
+						var domStr = `<div class="card">
+			                          <div class="card-header">New Card</div>
+			                          <div class="card-content">
+			                            <div class="card-content-inner">
+			                                这是第${changeNum}次请求返回的内容
+			                            </div' +
+			                          </div>
+			                      </div>`;
+						$("#homeContent .cardBox").append(domStr);
+					}else {
+		                $.detachInfiniteScroll($('.infinite-scroll'));	//停止无限滚动
+		                $('.infinite-scroll-preloader').remove();
+		                var domStr = `<div class="noMoreBox">
+				                          <div class="noMore-content">
+				                            <div class="noMore-content-inner">
+				                                ------没有更多内容了------
+				                            </div' +
+				                          </div>
+				                      </div>`;
+				        $("#homeContent").append(domStr);
+		                return;
+					}
+					lastIndex = $('#page-home .cardBox .card').length;
+				}
+			},
+			complete: () => {
+				$.pullToRefreshDone('.pull-to-refresh-content');
+			}
+		})
+	}
+
+
+
+
+	//以下是为了解决动态调用各模块加载函数的梗概方案
+	var arr = [fn01,fn02,fn03];		//函数字典
+	var arr01 = [0,2];				//获取到的需要执行的函数下标字典
+	function mainFn(arr01) {
+		for (var i = 0; i < arr01.length; i++) {
+			arr[arr01[i]]()
+		}
+	}
+
+	mainFn(arr01)
+
+	function fn01() {
+		console.log("%c 这是第一个方法","color:#00a1d6",);
+	}
+
+	function fn02() {
+		console.log("这是第二个方法");
+	}
+
+	function fn03() {
+		console.log("这是第三个方法");
+	}
+	//图表
+	function card01() {
+		$.getScript("/model/card01.js",function(){
+			// foo()
+		});
+	}
+	card01()
+
+
+
+
+	// //时间选择器初始化	(必须在对应dom树加载完成之后就开始加载，否则如当前js下初始化就会导致change事件无法监听，需要依靠原生change监听val)
+	// var thisDate = getDate();
+	// $("#beginDate").val(thisDate);
+	// $("#endDate").val(thisDate);
+	// //时间选择器初始化配置项
+	// var timeOption = {
+	// 	value: [thisDate],
+	//     monthNames:["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],
+	//     dayNames:["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],
+	//     dayNamesShort:["周日","周一","周二","周三","周四","周五","周六"]
+	// }
+
+	// $("#beginDate").calendar({
+	//     ...timeOption,
+	//     onChange: function(p,values,displayValues) {	//对象	//时间戳		//格式化日期
+	//     	console.log(p);
+	//     	console.log(values);
+	//     	console.log(displayValues);
+	//     }
+	// });
+
+	// $("#endDate").calendar({
+	//     ...timeOption,
+	//     onChange: function(p,values,displayValues) {	//对象	//时间戳		//格式化日期
+	//     	console.log(p);
+	//     	console.log(values);
+	//     	console.log(displayValues);
+	//     }
+	// });
+  	
+
+  	//初始化的change无法监听，需要原生change来获取值
+	// $("#beginDate").change(function() {
+	// 	console.log($(this).val())
+	// })
+
+	// $("#endDate").change(function() {
+	// 	console.log($(this).val())
+	// })
+
+
+	//初始化请求
+
+		// $.ajax({
+		// 	type: "post",
+		// 	dataType: "json",
+		// 	url: "https://www.easy-mock.com/mock/5b681e2d1695b64321fa17b7/getCode/upload",
+		// 	data: "",
+		// 	beforeSend: function() {
+		// 		console.log("启动")
+		// 	},
+		// 	success: function(data) {
+		// 		console.log(5454);
+		// 		if (data.flag == 1) {
+
+		// 			let result = data.data;
+		// 			let storage=window.localStorage;
+		// 			storage["User"] = JSON.stringify(result);
+		// 		}
+		// 	},
+		// 	complete: () => {
+		// 		console.log("完成");
+		// 	},
+		// 	error: function(error) {
+		// 		console.log(error);
+		// 	}
+		// })
+
+		//初始化请求（用户信息，自定义模块）
+		$.ajax({
+            type: "post",
+            dataType: "json",
+            async: true,
+            url: '/getUserMessage',
+            data: "",
+            success: function (data) {
+                console.log(data);
+                var home = data.menuOption.home;
+                if (home.indexOf("timeCard") != -1) {
+                	$.getScript("/model/timeCard.js",function(){
+						// foo()
+					});
+                }
+            },
+            error: function (err) {
+            }
+        })
+
+        //图表绘制方法
+        $(function() {
+        	const data = [
+			  { genre: 'Sports', sold: 275 },
+			  { genre: 'Strategy', sold: 115 },
+			  { genre: 'Action', sold: 120 },
+			  { genre: 'Shooter', sold: 350 },
+			  { genre: 'Other', sold: 150 },
+			];
+
+			// Step 1: 创建 Chart 对象
+			const chart = new F2.Chart({
+			  id: 'myChart',
+			  pixelRatio: window.devicePixelRatio // 指定分辨率
+			});
+
+			// Step 2: 载入数据源
+			chart.source(data);
+
+			// Step 3：创建图形语法，绘制柱状图，由 genre 和 sold 两个属性决定图形位置，genre 映射至 x 轴，sold 映射至 y 轴
+			chart.interval().position('genre*sold').color('genre');
+
+			// Step 4: 渲染图表
+			chart.render();
+        })
+
+
+
+
+		//睡眠图表
+        let chart_sleep;
+        function getSleepChart() {
+        	$.ajax({
+	            type: "post",
+	            dataType: "json",
+	            async: true,
+	            url: '/getChartSleep',
+	            data: "",
+	            success: function (data) {
+	                console.log(data);
+	                if (data.flag == 1) {
+	                	var xList = data.data.dateList;
+	                	var yList = data.data.timeList;
+	                	var avg;
+	                	var storage=window.localStorage;
+						let sleepObj = JSON.parse(storage.getItem("SLEEP"));
+						
+						if (sleepObj) {		//存在sotorage
+							var xList02 = sleepObj.dateList;
+							if (xList.length >= xList02.length) {	//数据库为最新时
+	                			yList = data.data.timeList;
+	                			avg = data.data.average;
+	                			storage.setItem("SLEEP",JSON.stringify(data.data));		//更新storage
+							}else {			//本地为最新时
+								xList = xList02;
+								yList = sleepObj.timeList;
+	                			avg = sleepObj.average;
+							}
+						}else {		//本地无数据
+							storage.setItem("SLEEP",JSON.stringify(data.data));			//写入storage
+
+						}
+
+						
+	                	
+	                	var arr01 = [];
+	                	xList.forEach(function(val,index,arr) {
+	                		var obj = {
+	                			time: val,
+	                			tem: yList[index]
+	                		}
+	                		arr01.push(obj);
+	                	})
+	                	chart_sleep = new F2.Chart({
+						  id: 'sleepChart',
+						  pixelRatio: window.devicePixelRatio
+						});
+
+						
+	                	//配置项
+						var defs = {
+						  time: {
+						    type: 'timeCat',
+						    mask: 'MM/DD',
+						    // tickCount: 1,
+						    range: [0.005, 0.9]
+						  },
+						  tem: {
+						    tickCount: 10,
+						    // min: 20
+						  }
+						};
+						chart_sleep.source(arr01, defs);
+						chart_sleep.axis('time', {
+							label: {
+								rotate: -Math.PI / 4
+							},
+							labelOffset: 15
+						  // label: function label(text, index, total) {
+						  //   var textCfg = {};
+						  //   if (index === 0) {
+						  //     textCfg.textAlign = 'left';
+						  //   } else if (index === total - 1) {
+						  //     textCfg.textAlign = 'right';
+						  //   }
+
+						  //   return textCfg;
+						  // }
+						});
+						// chart.tooltip({
+						//   showCrosshairs: true,
+						//   showXTip: true
+						  
+						// });
+						// 
+						
+						var canvasOffsetTop = $('#sleepChart').position().top;
+						var canvasOffsetLeft = $('#sleepChart').position().left;
+						$('#sleepChart').parent().prepend('<div class="f2-tooltip"><span> </span></div>');
+						chart_sleep.tooltip({
+							custom: true,
+							showXTip: true,
+			  				showCrosshairs: true,
+						  onChange: function onChange(ev) {
+						    var tooltipEl = $('.f2-tooltip');
+						    var currentData = ev.items[0];
+						    var text = fnChangeTime(currentData.value);	//调用时间转换
+					    	
+						    tooltipEl.html(['<span>' + text + '</span>'].join(''));
+
+						    tooltipEl.css({
+						      opacity: 1,
+						      left: canvasOffsetLeft + currentData.x - tooltipEl.outerWidth() / 2 - 5 + 'px',
+						      top: canvasOffsetTop + currentData.y - tooltipEl.outerHeight() - 22 + 'px'
+						    });
+						  },
+						  onHide: function onHide() {
+						    var tooltipEl = $('.f2-tooltip');
+						    tooltipEl.css({
+						      opacity: 0
+						    });
+						  }
+						});
+						console.log(avg);
+						var avgText = fnChangeTime(avg);	//时间转换
+						chart_sleep.guide().line({
+						    start: ['min', 23.5],
+						    end: ['max', 23.5],
+						    style: {
+						      stroke: '#52c41a',
+						      lineWidth: 2,
+						      lineDash: [ 2,3,5 ],
+						      lineCap: 'round'
+						    }
+						  });
+
+						chart_sleep.guide().line({
+						    start: ['min', avg],
+						    end: ['max', avg],
+						    style: {
+						      stroke: '#1890FF',
+						      lineWidth: 2,
+						      lineDash: [ 2,3,5 ],
+						      lineCap: 'round'
+						    }
+						  })
+
+						 chart_sleep.guide().text({
+						    position: [0, 23.5],
+						    content: "23:30",
+						    style: {
+					    	  stroke: '#52c41a',
+						      textBaseline: 'bottom',
+						      textAlign: 'center'
+						    },
+						    offsetX: -20
+						  },)
+
+						 chart_sleep.guide().text({
+						    position: [0, avg],
+						    content: avgText,
+						    style: {
+					    	  stroke: '#1890FF',
+						      textBaseline: 'bottom',
+						      textAlign: 'center'
+						    },
+						    offsetX: -20
+						  },)
+
+						chart_sleep.line({connectNulls: true}).position('time*tem').shape('smooth');
+						chart_sleep.point().position('time*tem').shape('smooth').style({
+						  stroke: '#fff',
+						  lineWidth: 1
+						});
+						chart_sleep.render();
+	                	$(window).resize(function () {
+	                		console.log("视口变化");
+	                		
+	                		var chartdom = chart_sleep._attrs.id;
+	                		$("#" + chartdom).width("100%");
+	                		var width = $("#" + chartdom).width();
+	                		var height = $("#" + chartdom).height();
+	                		
+	                		chart_sleep.changeSize(width, height)
+	                		console.log(height);
+	                		console.log(chart_sleep);
+	                	})
+	                }
+	            },
+	            error: function (err) {
+	           }
+	        })
+        }
+
+
+        //睡眠提交事件
+        $("#sleepBtn").click(function() { 
+        	var dateStr = getDate();	//获取日期
+        	var timeStr = new Date().getHours() + Number((new Date().getMinutes() / 60).toFixed(2));
+        	console.log(timeStr);
+        	console.log(mGetDate(2019,03))
+        	let reqObj = {
+        		dateStr: dateStr,
+        		timeStr: timeStr
+        	}
+        	$.ajax({
+	            type: "post",
+	            dataType: "json",
+	            async: true,
+	            url: '/refSleepTime',
+	            data: reqObj,
+	            success: function (data) {
+					console.log(data);
+					if(data.flag == 1) {
+						let result = data.data;
+						switch(result.type) {
+							case "0" : $.toast("今天的记录已经提交了~");break;
+							case "1" : $.toast("记录已保存！");getSleepChart();break;
+						}
+					}
+
+	                
+	            },
+	            error: function (err) {
+	            }
+	        })
+        })
+
+
+        
+        $(function() {
+					getSleepChart();
+					for (let index = 0; index < L; index++) {
+						console.log(index)
+						
+					}
+				})
+</script>

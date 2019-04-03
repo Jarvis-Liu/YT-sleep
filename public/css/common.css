@@ -1,0 +1,144 @@
+.page {
+	background: #FFFEFF;
+}
+
+.card {
+	margin: 1.5rem 1rem;
+	box-shadow:1px 0.2rem 0.8rem rgba(0,0,0,0.15);
+	border-radius: 0.3rem;
+}
+
+.card-header {
+	display: block;
+}
+
+.card-header-content {
+	display: flex;
+	margin-bottom: 0.5rem;
+}
+
+.card-header-content:last-of-type  {
+	margin-bottom: 0;
+}
+
+/* 按钮组 */
+
+.btn {
+	display: block;
+    outline: 0 none;
+    -webkit-appearance: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    text-align: center;
+    font-size: 18px;
+    height: 47px;
+    line-height: 47px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    white-space: nowrap;
+    color: #000;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+
+.button {
+    position: relative;
+    display: block;
+    height: 1.8rem;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    padding: 0 .5rem;
+    margin: 0;
+    font-family: inherit;
+    font-size: .7rem;
+    line-height: 1.75rem;
+    color: #0894ec;
+    text-align: center;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    background: 0 0;
+    border: 1px solid #0894ec;
+    border-radius: .25rem;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+}
+
+.button-light {
+    color: #fff;
+    background-color: #108ee9;
+    border: 1px solid #108ee9;
+    border-radius: 20px;
+}
+
+.button-light:active {
+	color: hsla(0,0%,100%,0.3);
+	background: #0e80d2;
+}
+
+
+/*iconfont*/
+
+.iconfont {
+	margin-right: 5px;
+}
+
+/*.card-header-content span {
+	width: 25%;
+}*/
+
+
+/* 时间选择器 */
+[data-toggle=date] {
+	width: 75%;
+	margin-left: 5px;
+	border: none;
+	border-bottom: 1px solid #ccc;
+	text-align: center;
+}
+
+
+/* antV tooltip */
+
+.f2-tooltip {
+  -moz-box-shadow: 1px 1px 0.5px 0.5px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 1px 1px 0.5px 0.5px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 1px 0.5px 0.5px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  z-index: 99;
+  background-color: #1890ff;
+  padding: 5px;
+  border-radius: 3px;
+  text-align: center;
+  width: 2.4rem;
+  opacity: 0;
+}
+.f2-tooltip:after {
+  content: " ";
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid #1890ff;
+  position: absolute;
+  left: 50%;
+  margin-left: -6px;
+  bottom: -8px;
+}
+.f2-tooltip span {
+  display: block;
+  color: #fff;
+}
+.f2-tooltip span:nth-child(1) {
+  font-size: 11px !important;
+}
+.f2-tooltip span:nth-child(2) {
+  font-size: 13px !important;
+}

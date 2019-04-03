@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/vue/2.6.6/vue.common.dev.js"></script>
+</head>
+<body>
+	<iframe src="http://www.nicetool.net/embed/gif_maker.html" width="100%" height="450px;" scrolling="no" style="border:0px;"></iframe>
+	<div id="app">
+		<span v-on:click = "changeColor">{{text}}</span><button-counter></button-counter>
+		<ca v-model="countB" v-on:changer="addallcounter" :countbb="countB"></ca>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	
+	//全局
+	Vue.component('button-counter', {
+	  data: function () {
+	    return {
+	      count: 0
+	    }
+	  },
+	  template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+	})
+
+	//局部
+	var ComponentA = {
+		// name: "compA",
+		data: function() {
+			return {
+				counts : 99,
+				countcc : this.countbb
+			}
+		},
+		props: {
+			countbb: Number
+		},
+		methods: {
+			changer() {
+				this.countcc += 10;
+				console.log(this);
+				this.$parent.$emit("addallcounter")
+				console.log(this.countcc);
+				console.log(this.countbb);
+			}
+		},
+		template: '<div><p>{{ counts }}</p><p @click="changer()">{{ countcc }}</p></div>'
+	}
+
+	var app = new Vue({
+	  	el: "#app",
+	  	data: {
+	  		text: "这是一则测试描述",
+	  		countB: 456
+	  	},
+	  	components: {
+	  		"ca" : ComponentA
+	  	},
+	  	methods: {
+	  		changeColor(e) {
+	  			e.target.style.color = "red";
+	  			console.log(this.countB)
+	  		},
+	  		addallcounter(){
+	            console.log(111)
+	            this.allCounter += 1;
+	        }
+	  	},
+	  	watch: {
+	  		countB() {
+	  			console.log(this.countB);
+	  		}
+	  		
+	  	},
+	  	updated: () => {
+	  		console.log(this.countB);
+	  	}
+	})
+</script>
